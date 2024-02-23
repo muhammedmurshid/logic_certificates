@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="exp_format_logic" model="report.paperformat">
+        <field name="name">Logic A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">22</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">27</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="experience_template_odoo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t>
+                    <div class="page">
+                        <style>
+                            p {
+                            font-size: 18px;
+                            }
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            td, th {
+                            font-size: 18px;
+                            border: 2px solid #dddddd;
+                            text-align: left;
+                            padding: 6px;
+                            }
+
+                        </style>
+                        <div class="row page">
+                            <div align="center">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                                     style="max-height: 100px;" alt="Logo"/>
+                            </div>
+                            <!--                            <p class="oe_left" t-field="o.location"/>-->
+                            <p class="oe_left" t-field="o.date"/>
+                            <br/>
+                            <h2 align="center">
+                                <u>EXPERIENCE LETTER</u>
+                            </h2>
+                            <br/>
+                            <h2 align="center">
+                                <u>TO WHOM-SO-EVER IT MAY CONCERN</u>
+                            </h2>
+                            <h3>
+                                <p style="line-height: 2;">This is to certify that
+                                    <b>
+                                        <span t-field="o.title"/>.
+                                        <span t-field="o.employee_id"/>
+                                        <span t-field="o.address"/>
+                                    </b>
+                                    <!--                            D/o of <b>Mr. <span t-field="o.father_name"/></b>, -->
+
+                                    has worked as
+                                    <b>
+                                        <span t-field="o.designation"/>
+                                    </b>
+                                    at
+                                    <b>Logic Management Training Institutes Pvt. Ltd</b>
+                                    from
+                                    <b>
+                                        <span t-field="o.joining_date"/>
+                                    </b>
+                                    ,
+                                    until
+                                    <b>
+                                        <span t-field="o.leaving_date"/>.
+                                    </b>
+                                </p>
+                                <br/>
+                                <br/>
+                                <p>
+                                    During his/her tenure with us, he was found to be Hardworking, Honest, Faithful and
+                                    Goal
+                                    Oriented. Wishing him all success in the future ahead.
+                                </p>
+                            </h3>
+
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row" style="line-height: 2;">
+                            <p>
+                                <h3>Logic Management Training Institutes Pvt. Ltd.</h3>
+                            </p>
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_experience_report" model="ir.actions.report">
+        <field name="name">Experience Certificates</field>
+        <field name="model">logic.experience.certificates</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">logic_certificates.experience_template_odoo</field>
+        <field name="report_file">logic_certificates.experience_template_odoo</field>
+        <field name="paperformat_id" ref="logic_certificates.exp_format_logic"/>
+        <field name="print_report_name">'Experience Certificate - %s' % (object.employee_id)</field>
+        <field name="binding_model_id" ref="model_logic_experience_certificates"/>
+    </record>
+</odoo>

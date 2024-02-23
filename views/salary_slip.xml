@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="model_logic_salary_slip_form_view" model="ir.ui.view">
+        <field name="name">Certificates</field>
+        <field name="model">logic.salary.slip</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Types">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="employee_code"/>
+                            <field name="designation"/>
+                            <field name="department"/>
+                            <field name="branch"/>
+                        </group>
+                        <group>
+                            <field name="joining_date"/>
+                            <field name="pay_period"/>
+                            <field name="total_working_days"/>
+                            <field name="esi_number"/>
+                            <field name="pf_number"/>
+
+                        </group>
+                    </group>
+                     <notebook>
+                        <page string="Salary">
+                            <field name="salary_ids">
+                                <tree editable="bottom">
+                                    <field name="earnings"/>
+                                    <field name="earned_amount" />
+                                    <field name="deduction"/>
+                                    <field name="deducted_amount"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+                     <group name="note_group" col="6">
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="salary_total">
+                            <field name="currency_id" invisible="1"/>
+                            <field name="gross_pay" widget="monetary"/>
+                            <field name="total_deduction" widget="monetary"/>
+                            <div class="oe_subtotal_footer_separator oe_inline">
+                                <label for="net_pay" string="Net Pay"/>
+                            </div>
+                            <field name="net_pay" nolabel="1" class="oe_subtotal_footer_separator"
+                                   widget='monetary' options="{'currency_field': 'currency_id'}"/>
+
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="model_logic_salary_slip_list" model="ir.ui.view">
+        <field name="name">Certificates</field>
+        <field name="model">logic.salary.slip</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="employee_code"/>
+                <field name="designation"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="model_logic_salary_slip_action">
+        <field name="name">Salary Slip</field>
+        <field name="res_model">logic.salary.slip</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Salary Slip"
+              id="model_logic_salary_slip_menu"
+              action="model_logic_salary_slip_action"
+              parent="model_logic_experience_main_menu"
+              sequence="2"/>
+
+
+</odoo>

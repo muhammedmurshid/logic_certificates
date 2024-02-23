@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="model_logic_experience_form" model="ir.ui.view">
+        <field name="name">Certificates</field>
+        <field name="model">logic.experience.certificates</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Types">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="designation"/>
+                            <field name="title"/>
+
+                            <label for="address" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="address" placeholder="Address..." class="o_address_street"/>
+                                <field name="country" placeholder="Country"/>
+                                <field name="state" placeholder="State..." class="o_address_street"/>
+                                <field name="pincode" placeholder="Pincode"/>
+                            </div>
+                            <field name="joining_date"/>
+                            <field name="leaving_date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="model_logic_experience_list" model="ir.ui.view">
+        <field name="name">Certificates</field>
+        <field name="model">logic.experience.certificates</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="designation"/>
+                <field name="joining_date"/>
+                <field name="leaving_date"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="model_logic_experience_action">
+        <field name="name">Certificates</field>
+        <field name="res_model">logic.experience.certificates</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Certificates"
+              id="model_logic_experience_main_menu"
+              web_icon="logic_certificates/static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem name="Experience Certificates"
+              id="model_logic_experience_menu"
+              action="model_logic_experience_action"
+              parent="model_logic_experience_main_menu"
+              sequence="2"/>
+
+
+</odoo>

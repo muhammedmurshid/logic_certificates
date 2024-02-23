@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="salary_slip_format_logic" model="report.paperformat">
+        <field name="name">Logic A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">22</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">27</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="salary_slip_template_odoo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t>
+                    <div class="page">
+                        <style>
+                            p {
+                            font-size: 18px;
+                            }
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            td, th {
+                            font-size: 18px;
+                            border: 1px solid #0a0a0a;
+                            text-align: left;
+                            padding: 4px;
+                            }
+
+                        </style>
+                        <div class="row page">
+                            <div align="center">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                                     style="max-height: 100px;" alt="Logo"/>
+                            </div>
+                            <br/>
+
+                            <table>
+                                <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                                <!--                                <thead style="display: table-row-group">-->
+                                <!--                                    <tr>-->
+                                <!--                                        &lt;!&ndash; added header to display indexes &ndash;&gt;-->
+                                <!--                                        <th name="th_index" class="text-start">SL No</th>-->
+                                <!--                                        <th name="th_description" class="text-start">Particulars</th>-->
+                                <!--                                        <th name="th_quantity" class="text-end">Amount</th>-->
+                                <!--                                    </tr>-->
+                                <!--                                </thead>-->
+
+                                <tbody class="sale_tbody">
+                                    <!-- added variable 'index' to increment index on each iteration -->
+
+
+                                    <tr>
+                                        <td>
+                                            <span>Employee Name :
+                                                <span t-field="o.employee_id"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>Date of Joining :
+                                                <span t-field="o.joining_date"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Employee Code :
+                                                <span t-field="o.employee_code"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>Pay Period :
+                                                <span t-field="o.pay_period"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Designation :
+                                                <span t-field="o.designation"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>Total Working Days :
+                                                <span t-field="o.total_working_days"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Department :
+                                                <span t-field="o.department"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>ESI Number :
+                                                <span t-field="o.esi_number"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Branch :
+                                                <span t-field="o.branch"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>PF Number :
+                                                <span t-field="o.pf_number"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <br/>
+                            <br/>
+                            <table>
+                                <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                                <thead style="display: table-row-group">
+                                    <tr>
+                                        <!-- added header to display indexes -->
+                                        <th class="text-start">Earnings</th>
+                                        <th class="text-start">Earned Amount</th>
+                                        <th class="text-end">Deduction</th>
+                                        <th class="text-end">Deducted Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="sale_tbody">
+                                    <!-- added variable 'index' to increment index on each iteration -->
+                                    <t t-set="index" t-value="1"/>
+
+                                    <t t-foreach="o.salary_ids" t-as="line">
+                                        <tr>
+                                            <td name="td_name">
+                                                <span t-field="line.earnings"/>
+                                            </td>
+                                            <td name="td_amount" class="text-center">
+                                                <span t-field="line.earned_amount"/>
+                                            </td>
+                                            <td name="td_amount" class="text-center">
+                                                <span t-field="line.deduction"/>
+                                            </td>
+                                            <td name="td_amount" class="text-center">
+                                                <span t-field="line.deducted_amount"/>
+                                            </td>
+                                        </tr>
+
+                                    </t>
+
+                                </tbody>
+                            </table>
+                            <p align="right">
+                                <span>Gross Pay :</span>
+                                <span align="right" t-field="o.gross_pay"/>
+                            </p>
+                            <p align="right">
+                                <span>Total Deduction :</span>
+                                <span align="right" t-field="o.total_deduction"/>
+                            </p>
+                            <p align="right">
+                                <span>Net Pay :</span>
+                                <span align="right" t-field="o.net_pay"/>
+                            </p>
+
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row" style="line-height: 2;">
+                            <p>
+                                <h3>Logic Management Training Institutes Pvt. Ltd.</h3>
+                            </p>
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_salary_slip_report" model="ir.actions.report">
+        <field name="name">Salary Slip</field>
+        <field name="model">logic.salary.slip</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">logic_certificates.salary_slip_template_odoo</field>
+        <field name="report_file">logic_certificates.salary_slip_template_odoo</field>
+        <field name="paperformat_id" ref="logic_certificates.salary_slip_format_logic"/>
+        <field name="print_report_name">'Salary Slip - %s' % (object.employee_id)</field>
+        <field name="binding_model_id" ref="model_logic_salary_slip"/>
+    </record>
+</odoo>
