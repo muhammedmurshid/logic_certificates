@@ -15,9 +15,9 @@
     </record>
 
     <template id="experience_template_odoo">
-        <t t-call="web.html_container">
+        <t t-call="web.html_container" style="background-color: red;">
             <t t-foreach="docs" t-as="o">
-                <t>
+                <t style="background-color: red;">
                     <div class="page">
                         <style>
                             p {
@@ -37,11 +37,30 @@
                             }
 
                         </style>
+
+                        <div class="header" style="background-color: #fcfcf7;">
+                            <br/>
+                            <img src="/logic_certificates/static/src/img/letterhead.png"
+                                 style="max-height: 100px;"/>
+                        </div>
+
                         <div class="row page">
-                            <div align="center">
-                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
-                                     style="max-height: 100px;" alt="Logo"/>
-                            </div>
+                            <br/>
+
+<!--                            <div>-->
+<!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
+<!--                                     style="max-height: 100px;" alt="Logo" align="left"/>-->
+<!--                                <li>-->
+<!--                                    <h2 align="center">LOGIC MANAGEMENT TRAINING INSTITUTES PVT. LTD.</h2>-->
+<!--                                </li>-->
+<!--                                <li>4 th Floor, Metropolis Building, Palarivattom, Kochi, Kerala - 682025</li>-->
+<!--                                <li>Tel : +91 9895 818 581, +91 9995 518 581 | info@logiceducation.org | www.logiceducation.org-->
+<!--                                </li>-->
+<!--                            </div>-->
+                            <br/>
+                            <!--                                                            <img class="img img-responsive" src="/logic_certificates/static/src/img/letterhead.png"/>-->
+                            <!--                                <img src='/logic_certificates/static/src/img/letterhead.png' style="max-height: 45px;"/>-->
+                            <!--                            </div>-->
                             <!--                            <p class="oe_left" t-field="o.location"/>-->
                             <p class="oe_left" t-field="o.date"/>
                             <br/>
