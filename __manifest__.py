@@ -1,5 +1,5 @@
 {
-    'name': "CIP",
+    'name': "Certificates",
     'version': "14.0.1.0",
     'sequence': "0",
     'depends': ['base', 'mail'],
