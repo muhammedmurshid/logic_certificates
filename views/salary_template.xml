@@ -19,6 +19,7 @@
             <t t-foreach="docs" t-as="o">
                 <t>
                     <div class="page">
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
                         <style>
                             p {
                             font-size: 18px;
@@ -35,13 +36,21 @@
                             text-align: left;
                             padding: 4px;
                             }
+                            h2, h3 {
+                            font-family: "Trirong", serif;
+                            }
 
                         </style>
+                        <div class="header">
+                            <br/>
+                            <img src="/logic_certificates/static/src/img/letterhead2.png"
+                                 style="max-height: 100px;"/>
+                        </div>
                         <div class="row page">
-                            <div align="center">
-                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
-                                     style="max-height: 100px;" alt="Logo"/>
-                            </div>
+<!--                            <div align="center">-->
+<!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
+<!--                                     style="max-height: 100px;" alt="Logo"/>-->
+<!--                            </div>-->
                             <br/>
 
                             <table>

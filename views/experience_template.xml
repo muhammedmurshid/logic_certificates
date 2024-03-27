@@ -19,7 +19,11 @@
             <t t-foreach="docs" t-as="o">
                 <t style="background-color: red;">
                     <div class="page">
+
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
                         <style>
+                            @import
+                            url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900")
                             p {
                             font-size: 18px;
                             }
@@ -35,28 +39,32 @@
                             text-align: left;
                             padding: 6px;
                             }
+                            h2, h3 {
+                            font-family: "Trirong", serif;
+                            }
+
 
                         </style>
 
-                        <div class="header" style="background-color: #fcfcf7;">
+                        <div class="header">
                             <br/>
-                            <img src="/logic_certificates/static/src/img/letterhead.png"
+                            <img src="/logic_certificates/static/src/img/letterhead2.png"
                                  style="max-height: 100px;"/>
                         </div>
 
                         <div class="row page">
                             <br/>
 
-<!--                            <div>-->
-<!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
-<!--                                     style="max-height: 100px;" alt="Logo" align="left"/>-->
-<!--                                <li>-->
-<!--                                    <h2 align="center">LOGIC MANAGEMENT TRAINING INSTITUTES PVT. LTD.</h2>-->
-<!--                                </li>-->
-<!--                                <li>4 th Floor, Metropolis Building, Palarivattom, Kochi, Kerala - 682025</li>-->
-<!--                                <li>Tel : +91 9895 818 581, +91 9995 518 581 | info@logiceducation.org | www.logiceducation.org-->
-<!--                                </li>-->
-<!--                            </div>-->
+                            <!--                            <div>-->
+                            <!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
+                            <!--                                     style="max-height: 100px;" alt="Logo" align="left"/>-->
+                            <!--                                <li>-->
+                            <!--                                    <h2 align="center">LOGIC MANAGEMENT TRAINING INSTITUTES PVT. LTD.</h2>-->
+                            <!--                                </li>-->
+                            <!--                                <li>4 th Floor, Metropolis Building, Palarivattom, Kochi, Kerala - 682025</li>-->
+                            <!--                                <li>Tel : +91 9895 818 581, +91 9995 518 581 | info@logiceducation.org | www.logiceducation.org-->
+                            <!--                                </li>-->
+                            <!--                            </div>-->
                             <br/>
                             <!--                                                            <img class="img img-responsive" src="/logic_certificates/static/src/img/letterhead.png"/>-->
                             <!--                                <img src='/logic_certificates/static/src/img/letterhead.png' style="max-height: 45px;"/>-->
