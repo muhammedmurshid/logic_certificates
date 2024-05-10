@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from PyPDF2 import PdfFileMerger
 
 
 class LogicExperienceCertificates(models.Model):

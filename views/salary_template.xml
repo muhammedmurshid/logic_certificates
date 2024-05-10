@@ -41,17 +41,26 @@
                             }
 
                         </style>
-                        <div class="header">
-                            <br/>
-                            <img src="/logic_certificates/static/src/img/letterhead2.png"
-                                 style="max-height: 100px;"/>
-                        </div>
+<!--                        <div class="header">-->
+<!--                            <br/>-->
+<!--                            <img src="/logic_certificates/static/src/img/letterhead2.png"-->
+<!--                                 style="max-height: 100px;"/>-->
+<!--                        </div>-->
+
                         <div class="row page">
-<!--                            <div align="center">-->
-<!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
-<!--                                     style="max-height: 100px;" alt="Logo"/>-->
-<!--                            </div>-->
+                            <!--                            <div align="center">-->
+                            <!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
+                            <!--                                     style="max-height: 100px;" alt="Logo"/>-->
+                            <!--                            </div>-->
                             <br/>
+                            <br/>
+                            <br></br>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+
 
                             <table>
                                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
@@ -197,6 +206,7 @@
                             </p>
 
                         </div>
+
                     </div>
                 </t>
             </t>

@@ -14,10 +14,11 @@
         <field name="dpi">90</field>
     </record>
 
+
     <template id="experience_template_odoo">
-        <t t-call="web.html_container" style="background-color: red;">
+        <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t style="background-color: red;">
+                <t>
                     <div class="page">
 
                         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
@@ -43,18 +44,17 @@
                             font-family: "Trirong", serif;
                             }
 
-
                         </style>
 
-                        <div class="header">
-                            <br/>
-                            <img src="/logic_certificates/static/src/img/letterhead2.png"
-                                 style="max-height: 100px;"/>
-                        </div>
+<!--                        <div class="header">-->
+<!--                            <br/>-->
+<!--                            <img src="/logic_certificates/static/src/img/head.png"-->
+<!--                            />-->
+<!--                        </div>-->
+
 
                         <div class="row page">
                             <br/>
-
                             <!--                            <div>-->
                             <!--                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"-->
                             <!--                                     style="max-height: 100px;" alt="Logo" align="left"/>-->
@@ -114,6 +114,8 @@
                             </h3>
 
                         </div>
+
+
                         <br/>
                         <div class="row" style="line-height: 2;">
                             <p>
@@ -122,10 +124,12 @@
 
                         </div>
 
-                        <div class="row" style="line-height: 2;">
+
+                        <div class="row">
                             <p>
                                 <h3>Logic Management Training Institutes Pvt. Ltd.</h3>
                             </p>
+
 
                         </div>
                     </div>
@@ -133,6 +137,7 @@
             </t>
         </t>
     </template>
+
 
     <record id="action_experience_report" model="ir.actions.report">
         <field name="name">Experience Certificates</field>
