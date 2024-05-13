@@ -46,7 +46,7 @@ class LogicSalarySlip(models.Model):
         res = super(LogicSalarySlip, self).default_get(fields_list)
         vals = [(0, 0, {'earnings': 'Basic', 'earned_amount': 0, 'deduction': 'PF Employer Contribution',
                         'deducted_amount': 0}),
-                (0, 0, {'earnings': 'HIRA', 'earned_amount': 0, 'deduction': 'PF Employer Contribution',
+                (0, 0, {'earnings': 'HRA', 'earned_amount': 0, 'deduction': 'PF Employer Contribution',
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'Special Allowance', 'earned_amount': 0, 'deduction': 'ESI Employer Contribution',
                         'deducted_amount': 0}),
