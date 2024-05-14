@@ -20,14 +20,20 @@
                 <t>
                     <div class="page">
                         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
+                        <link href="https://fonts.googleapis.com/css2?family=Tinos" rel="stylesheet"/>
                         <style>
                             p {
                             font-size: 18px;
+                            font-family: "Tinos", serif;
+                            }
+                            span {
+                            font-size: 18px;
+                            font-family: "Tinos", serif;
                             }
                             table {
-                            font-family: arial, sans-serif;
                             border-collapse: collapse;
                             width: 100%;
+                            font-family: "Tinos", serif;
                             }
 
                             td, th {
@@ -35,17 +41,19 @@
                             border: 1px solid #0a0a0a;
                             text-align: left;
                             padding: 4px;
+                            font-family: "Tinos", serif;
                             }
-                            h2, h3 {
-                            font-family: "Trirong", serif;
+                            h3 {
+                            font-family: "Tinos", serif;
                             }
 
+
                         </style>
-<!--                        <div class="header">-->
-<!--                            <br/>-->
-<!--                            <img src="/logic_certificates/static/src/img/letterhead2.png"-->
-<!--                                 style="max-height: 100px;"/>-->
-<!--                        </div>-->
+                        <!--                        <div class="header">-->
+                        <!--                            <br/>-->
+                        <!--                            <img src="/logic_certificates/static/src/img/letterhead2.png"-->
+                        <!--                                 style="max-height: 100px;"/>-->
+                        <!--                        </div>-->
 
                         <div class="row page">
                             <!--                            <div align="center">-->
@@ -194,20 +202,22 @@
 
                         </div>
                         <br/>
-<!--                        <div class="row" style="line-height: 2;">-->
-<!--                            <p>-->
-<!--                                <h3>HR Manager</h3>-->
-<!--                            </p>-->
+                        <!--                        <div class="row" style="line-height: 2;">-->
+                        <!--                            <p>-->
+                        <!--                                <h3>HR Manager</h3>-->
+                        <!--                            </p>-->
 
-<!--                        </div>-->
-<!--                        <div class="row" style="line-height: 2;">-->
-<!--                            <p>-->
-<!--                                <h3>Logic Management Training Institutes Pvt. Ltd.</h3>-->
-<!--                            </p>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="row" style="line-height: 2;">-->
+                        <!--                            <p>-->
+                        <!--                                <h3>Logic Management Training Institutes Pvt. Ltd.</h3>-->
+                        <!--                            </p>-->
 
-<!--                        </div>-->
+                        <!--                        </div>-->
 
                     </div>
+                    <p>This payslip is system-generated and does not require a signature</p>
+
                 </t>
             </t>
         </t>
