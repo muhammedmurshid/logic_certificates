@@ -173,13 +173,13 @@
                                                 <span t-field="line.earnings"/>
                                             </td>
                                             <td name="td_amount" class="text-center">
-                                                <span t-field="line.earned_amount"/>
+                                                <span t-field="line.currency_id.symbol" /><span t-field="line.earned_amount"/>
                                             </td>
                                             <td name="td_amount" class="text-center">
                                                 <span t-field="line.deduction"/>
                                             </td>
                                             <td name="td_amount" class="text-center">
-                                                <span t-field="line.deducted_amount"/>
+                                                <span t-field="line.currency_id.symbol" /><span t-field="line.deducted_amount"/>
                                             </td>
                                         </tr>
 
@@ -189,15 +189,15 @@
                             </table>
                             <p align="right">
                                 <span>Gross Pay :</span>
-                                <span align="right" t-field="o.gross_pay"/>
+                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.gross_pay"/>
                             </p>
                             <p align="right">
                                 <span>Total Deduction :</span>
-                                <span align="right" t-field="o.total_deduction"/>
+                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.total_deduction"/>
                             </p>
                             <p align="right">
                                 <span>Net Pay :</span>
-                                <span align="right" t-field="o.net_pay"/>
+                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.net_pay"/>
                             </p>
 
                         </div>

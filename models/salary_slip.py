@@ -63,6 +63,8 @@ class LogicSalarySlip(models.Model):
                         'deducted_amount': 0}),
                 (0, 0, {'deduction': 'Leave Salary deduction',
                         'deducted_amount': 0}),
+                (0, 0, {'deduction': 'Salary Advance',
+                        'deducted_amount': 0}),
                 ]
         res.update({'salary_ids': vals})
         return res
@@ -110,4 +112,6 @@ class LogicSalaryCalculation(models.Model):
     earned_amount = fields.Float(string="Earned Amount")
     deduction = fields.Char(string="Deductions")
     deducted_amount = fields.Float(string="Deducted Amount")
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
+
     salary_id = fields.Many2one('logic.salary.slip', string="Salary Slip Id", ondelete="cascade")
