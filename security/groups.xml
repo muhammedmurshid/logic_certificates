@@ -10,5 +10,9 @@
             <field name="name">HR Manager</field>
             <field name="category_id" ref="module_logic_exp_certificates"/>
         </record>
+        <record id="academics_certificates_group" model="res.groups">
+            <field name="name">Academics</field>
+            <field name="category_id" ref="module_logic_exp_certificates"/>
+        </record>
     </data>
 </odoo>

@@ -63,6 +63,7 @@
               id="model_logic_experience_menu"
               action="model_logic_experience_action"
               parent="model_logic_experience_main_menu"
+              groups="logic_certificates.hr_manager_certificates"
               sequence="2"/>
 
 

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="bonafide_template_report" model="report.paperformat">
+        <field name="name">Logic A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">22</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">27</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <template id="bonafide_template_odoo_form">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t>
+                    <div class="page">
+
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
+                        <style>
+                            @import
+                            url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900")
+                            p {
+                            font-size: 18px;
+                            font-family: "Tinos", serif;
+                            }
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            td, th {
+                            font-size: 18px;
+                            border: 2px solid #dddddd;
+                            text-align: left;
+                            padding: 6px;
+                            }
+                            h2, h3 {
+                            font-family: "Tinos", serif;
+                            }
+
+                        </style>
+
+                        <div class="row page">
+                            <br/>
+
+                            <br/>
+                            <p>
+                                <span class="oe_left" t-field="o.date"/>
+                                <span class="oe_left" t-field="o.place"/>
+                            </p>
+                            <br/>
+                            <h2 align="center">
+                                <u>BONAFIDE CERTIFICATE</u>
+                            </h2>
+                            <br/>
+                            <h3>
+                                <p style="line-height: 2;">This is to certify that
+                                    <b>
+                                        <span t-field="o.title"/>.
+                                        <span t-field="o.student_id"/>
+                                        <span t-field="o.address"/>
+                                    </b>
+                                    <!--                            D/o of <b>Mr. <span t-field="o.father_name"/></b>, -->
+
+                                    is a registered student of Logic Management Training Institute Pvt. Ltd. Under the
+                                    brand name of Logic School of Management. She/he is pursuing
+                                    <b>
+                                        <span t-field="o.course_id"/>
+                                    </b>
+                                    Course. The details mentioned below are per the records of our institution.
+
+                                </p>
+                                <br/>
+                                <br/>
+                                <div>
+                                    <p>Admission No:
+                                        <span t-field="o.admission_number"/>
+                                        <br/>
+                                        Date of Join :
+                                        <span t-field="o.date_of_joining"/>
+                                        <br/>
+                                        Mode of Study :
+                                        <span t-field="o.mode_of_study"/>
+                                        <br/>
+                                        Current Status :
+                                        <span t-field="o.current_status"/>
+                                    </p>
+                                </div>
+                                <!--                                <p>-->
+                                <!--                                    During his/her tenure with us, he was found to be Hardworking, Honest, Faithful and-->
+                                <!--                                    Goal-->
+                                <!--                                    Oriented. Wishing him all success in the future ahead.-->
+                                <!--                                </p>-->
+                            </h3>
+
+                        </div>
+
+
+                        <br/>
+                        <!--                        <div class="row" style="line-height: 2;">-->
+                        <!--                            <p>-->
+                        <!--                                <h3>HR Manager</h3>-->
+                        <!--                            </p>-->
+
+                        <!--                        </div>-->
+
+
+                        <div class="row">
+                            <p>
+                                <h3>For Logic Management Training Institutes Pvt. Ltd.</h3>
+                            </p>
+
+
+                        </div>
+                        <div class="row">
+                            <h3>
+                                <p>
+                                    <br>
+                                        <span t-field="o.academic_head"/>
+                                    </br>
+                                    <br>
+                                        <span t-field="o.academic_head_designation"/>
+                                    </br>
+                                    <br>
+                                        <span t-field="o.head_mail"/>
+                                    </br>
+                                    <br>
+                                        <span t-field="o.website"/>
+                                    </br>
+                                </p>
+
+                            </h3>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="action_bonafide_report" model="ir.actions.report">
+        <field name="name">Bonafide Certificates</field>
+        <field name="model">logic.bonafide.certificates</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">logic_certificates.bonafide_template_odoo_form</field>
+        <field name="report_file">logic_certificates.bonafide_template_odoo_form</field>
+        <field name="paperformat_id" ref="logic_certificates.bonafide_template_report"/>
+        <field name="print_report_name">'Bonafide Certificate - %s' % (object.student_id)</field>
+        <field name="binding_model_id" ref="model_logic_bonafide_certificates"/>
+    </record>
+</odoo>
