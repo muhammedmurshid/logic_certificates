@@ -50,8 +50,7 @@ class LogicSalarySlip(models.Model):
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'Special Allowance', 'earned_amount': 0, 'deduction': 'ESI Employer Contribution',
                         'deducted_amount': 0}),
-                (0, 0, {'earnings': 'Statutory Bonus', 'earned_amount': 0, 'deduction': 'ESI Employee Contribution',
-                        'deducted_amount': 0}),
+
                 (0, 0, {'earnings': 'Incentive', 'earned_amount': 0, 'deduction': 'Professional Tax',
                         'deducted_amount': 0}),
 
@@ -60,6 +59,8 @@ class LogicSalarySlip(models.Model):
                 (0, 0, {'earnings': 'PF Employer Contribution', 'earned_amount': 0, 'deduction': 'Loan Amount',
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'ESI Employer Contribution', 'earned_amount': 0, 'deduction': 'Income Tax',
+                        'deducted_amount': 0}),
+                (0, 0, {'deduction': 'ESI Employee Contribution',
                         'deducted_amount': 0}),
                 (0, 0, {'deduction': 'Leave Salary deduction',
                         'deducted_amount': 0}),
