@@ -22,26 +22,28 @@
                     <div class="page">
 
                         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"/>
+                        <link href="https://fonts.googleapis.com/css2?family=Tinos" rel="stylesheet"/>
                         <style>
-                            @import
-                            url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900")
+                           
                             p {
                             font-size: 18px;
+                            font-family: "Tinos", serif;
                             }
                             table {
-                            font-family: arial, sans-serif;
+                            font-family: "Tinos", serif;
                             border-collapse: collapse;
                             width: 100%;
                             }
 
                             td, th {
                             font-size: 18px;
+                            font-family: "Tinos", serif;
                             border: 2px solid #dddddd;
                             text-align: left;
                             padding: 6px;
                             }
                             h2, h3 {
-                            font-family: "Trirong", serif;
+                            font-family: "Tinos", serif;
                             }
 
                         </style>
