@@ -48,11 +48,11 @@
 
                         </style>
 
-<!--                        <div class="header">-->
-<!--                            <br/>-->
-<!--                            <img src="/logic_certificates/static/src/img/head.png"-->
-<!--                            />-->
-<!--                        </div>-->
+                        <!--                        <div class="header">-->
+                        <!--                            <br/>-->
+                        <!--                            <img src="/logic_certificates/static/src/img/head.png"-->
+                        <!--                            />-->
+                        <!--                        </div>-->
 
 
                         <div class="row page">
@@ -95,7 +95,7 @@
                                         <span t-field="o.designation"/>
                                     </b>
                                     at
-                                    <b>Logic Management Training Institutes Pvt. Ltd</b>
+                                    <b>Veranda XL Learning Solutions Private Limited</b>
                                     from
                                     <b>
                                         <span t-field="o.joining_date"/>
@@ -121,15 +121,18 @@
                         <br/>
                         <div class="row" style="line-height: 2;">
                             <p>
-                                <h3>HR Manager</h3>
+                                <h3>HR Manager<br/>
+                                    <span t-field="o.hr_manager"/>
+                                </h3>
                             </p>
+
 
                         </div>
 
 
                         <div class="row">
                             <p>
-                                <h3>Logic Management Training Institutes Pvt. Ltd.</h3>
+                                <h3>Veranda XL Learning Solution Private Limited</h3>
                             </p>
 
 

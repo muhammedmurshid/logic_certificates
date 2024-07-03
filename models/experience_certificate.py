@@ -15,6 +15,7 @@ class LogicExperienceCertificates(models.Model):
     date = fields.Date(string='Date', default=fields.Date.context_today)
     pincode = fields.Char(string='Pincode')
     country = fields.Char(string='Country')
+    hr_manager = fields.Char(string='HR Manager')
     joining_date = fields.Date(string='Joining Date')
     leaving_date = fields.Date(string='Leaving Date')
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.user.company_id)

@@ -22,6 +22,7 @@
                             </div>
                             <field name="joining_date"/>
                             <field name="leaving_date"/>
+                            <field name="hr_manager"/>
                         </group>
                     </group>
                 </sheet>
