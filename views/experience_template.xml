@@ -72,7 +72,7 @@
                             <!--                                <img src='/logic_certificates/static/src/img/letterhead.png' style="max-height: 45px;"/>-->
                             <!--                            </div>-->
                             <!--                            <p class="oe_left" t-field="o.location"/>-->
-                            <p class="oe_left" t-field="o.date"/>
+                            <p class="oe_left" t-field="o.current_date"/>
                             <br/>
                             <h2 align="center">
                                 <u>EXPERIENCE LETTER</u>
@@ -109,7 +109,7 @@
                                 <br/>
                                 <br/>
                                 <p>
-                                    During his/her tenure with us, he was found to be Hardworking, Honest, Faithful and
+                                    During <span t-field="o.gender"/> tenure with us, he was found to be Hardworking, Honest, Faithful and
                                     Goal
                                     Oriented. Wishing him all success in the future ahead.
                                 </p>

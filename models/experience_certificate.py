@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from PyPDF2 import PdfFileMerger
+from datetime import datetime
 
 
 class LogicExperienceCertificates(models.Model):
@@ -16,10 +17,29 @@ class LogicExperienceCertificates(models.Model):
     pincode = fields.Char(string='Pincode')
     country = fields.Char(string='Country')
     hr_manager = fields.Char(string='HR Manager')
+
     joining_date = fields.Date(string='Joining Date')
     leaving_date = fields.Date(string='Leaving Date')
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.user.company_id)
-    title = fields.Selection([('mr','Mr'),('ms','Ms'),('mrs','Mrs')], default='mr', string="Title")
+    title = fields.Selection([('mr', 'Mr'), ('ms', 'Ms'), ('mrs', 'Mrs')], default='mr', string="Title")
+    current_date = fields.Char(string='Date', compute='_compute_display_date', store=True)
+
+    @api.depends('employee_id')
+    def _compute_display_date(self):
+        date = datetime.today().strftime('%d/%m/%Y')
+        self.current_date = date
+        print(date, 'jjjj')
+
+    @api.depends('title')
+    def _compute_display_gender(self):
+        if self.title:
+            if self.title == 'mr':
+                self.gender = 'his'
+            else:
+                self.gender = 'her'
+
+    gender = fields.Selection([('his', 'His'), ('her', 'Her')], string="Gender",
+                              compute='_compute_display_gender', store=True)
 
     def _compute_display_name(self):
         for i in self:

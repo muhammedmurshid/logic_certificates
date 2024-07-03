@@ -23,6 +23,11 @@
                             <field name="joining_date"/>
                             <field name="leaving_date"/>
                             <field name="hr_manager"/>
+
+                        </group>
+                        <group>
+                            <field name="gender" groups="base.group_no_one"/>
+                            <field name="current_date" groups="base.group_no_one"/>
                         </group>
                     </group>
                 </sheet>
