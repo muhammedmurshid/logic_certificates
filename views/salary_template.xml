@@ -189,7 +189,7 @@
                             </table>
                             <p align="right">
                                 <span>Gross Pay :</span>
-                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.gross_pay"/>
+                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.sample_gross_pay"/>
                             </p>
                             <p align="right">
                                 <span>Total Deduction :</span>

@@ -87,6 +87,26 @@ class LogicSalarySlip(models.Model):
             'gross_pay': total,
         })
 
+    @api.depends('salary_ids.earned_amount')
+    def _amount_all_sample_gross_pay(self):
+        """
+        Compute the total amounts of the SO.
+        """
+        total = 0
+        for order in self.salary_ids:
+            if order.earnings == 'PF Employer Contribution':
+                total += 0
+                print('PF Employer Contribution')
+            elif order.earnings == 'ESI Employer Contribution':
+                total += 0
+                print('ESI Employer Contribution')
+            else:
+                print(order.earned_amount)
+                total += order.earned_amount
+        self.update({
+            'sample_gross_pay': total,
+        })
+
     @api.depends('salary_ids.deducted_amount')
     def _amount_all_deduction(self):
         """
@@ -103,6 +123,8 @@ class LogicSalarySlip(models.Model):
     def get_net_pay_amount(self):
         for i in self:
             i.net_pay = i.gross_pay - i.total_deduction
+
+    sample_gross_pay = fields.Float(string="Gross Pay", compute='_amount_all_sample_gross_pay', store=True)
 
 
 class LogicSalaryCalculation(models.Model):
