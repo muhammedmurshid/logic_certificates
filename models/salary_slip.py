@@ -138,3 +138,4 @@ class LogicSalaryCalculation(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
 
     salary_id = fields.Many2one('logic.salary.slip', string="Salary Slip Id", ondelete="cascade")
+
