@@ -46,6 +46,9 @@
                             h3 {
                             font-family: "Tinos", serif;
                             }
+                            .font-weight-bold {
+                            font-weight: bold;
+                            }
 
 
                         </style>
@@ -152,6 +155,7 @@
                             <br/>
                             <br/>
                             <table>
+
                                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                                 <thead style="display: table-row-group">
                                     <tr>
@@ -170,35 +174,109 @@
                                     <t t-foreach="o.salary_ids" t-as="line">
                                         <tr>
                                             <td name="td_name">
-                                                <span t-field="line.earnings"/>
+                                                <t t-if="line.earnings">
+                                                    <t t-if="line.earnings == 'CTC Pay'">
+                                                        <!-- Apply inline bold style if deduction is 'Net Pay' -->
+                                                        <span style="font-weight: bold;">
+                                                            <span t-field="line.earnings"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <!-- Regular style for other values -->
+                                                        <span>
+                                                            <span t-field="line.earnings"/>
+                                                        </span>
+                                                    </t>
+                                                </t>
+
                                             </td>
                                             <td name="td_amount" class="text-center">
-                                                <span t-field="line.currency_id.symbol" /><span t-field="line.earned_amount"/>
+                                                <t t-if="line.earnings">
+                                                    <t t-if="line.earnings == 'CTC Pay'">
+                                                        <!-- Apply inline bold style if deduction is 'Net Pay' -->
+                                                        <span style="font-weight: bold;">
+                                                            <span t-field="line.currency_id.symbol"/>
+                                                            <span t-field="line.earned_amount"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <!-- Regular style for other values -->
+                                                        <span>
+                                                            <span t-field="line.currency_id.symbol"/>
+                                                            <span t-field="line.earned_amount"/>
+                                                        </span>
+                                                    </t>
+                                                </t>
+                                                <!-- Check if earnings is not empty before displaying earned_amount -->
+                                                <!--                                                <t t-if="line.earnings">-->
+                                                <!--                                                    <span t-field="line.currency_id.symbol"/>-->
+                                                <!--                                                    <span t-field="line.earned_amount"/>-->
+                                                <!--                                                </t>-->
+                                                <t t-else="">
+                                                    <!-- Blank space or nothing if earnings is empty -->
+                                                    <span></span>
+                                                </t>
                                             </td>
                                             <td name="td_amount" class="text-center">
-                                                <span t-field="line.deduction"/>
+                                                <t t-if="line.deduction">
+                                                    <t t-if="line.deduction == 'Net Pay' or line.deduction == 'Total Deduction'">
+                                                        <!-- Apply inline bold style if deduction is 'Net Pay' -->
+                                                        <span style="font-weight: bold;">
+                                                            <span t-field="line.deduction"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <!-- Regular style for other values -->
+                                                        <span>
+                                                            <span t-field="line.deduction"/>
+                                                        </span>
+                                                    </t>
+                                                </t>
+                                                <!--                                                <span t-field="line.deduction"/>-->
                                             </td>
                                             <td name="td_amount" class="text-center">
-                                                <span t-field="line.currency_id.symbol" /><span t-field="line.deducted_amount"/>
+                                                <!-- Check if deduction is not empty before displaying deducted_amount -->
+                                                <t t-if="line.deduction">
+                                                    <t t-if="line.deduction == 'Net Pay' or line.deduction == 'Total Deduction'">
+                                                        <!-- Apply inline bold style if deduction is 'Net Pay' -->
+                                                        <span style="font-weight: bold;">
+                                                            <span t-field="line.currency_id.symbol"/>
+                                                            <span t-field="line.deducted_amount"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <!-- Regular style for other values -->
+                                                        <span>
+                                                            <span t-field="line.currency_id.symbol"/>
+                                                            <span t-field="line.deducted_amount"/>
+                                                        </span>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <!-- Blank space or nothing if deduction is empty -->
+                                                    <span></span>
+                                                </t>
                                             </td>
                                         </tr>
-
                                     </t>
-
                                 </tbody>
+
                             </table>
-                            <p align="right">
-                                <span>CTC Pay :</span>
-                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.gross_pay"/>
-                            </p>
-                            <p align="right">
-                                <span>Total Deduction :</span>
-                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.total_deduction"/>
-                            </p>
-                            <p align="right">
-                                <span>Net Pay :</span>
-                                <span t-field="o.currency_id.symbol" /> <span align="right" t-field="o.net_pay"/>
-                            </p>
+                            <!--                            <p align="right">-->
+                            <!--                                <span>CTC Pay :</span>-->
+                            <!--                                <span t-field="o.currency_id.symbol"/>-->
+                            <!--                                <span align="right" t-field="o.gross_pay"/>-->
+                            <!--                            </p>-->
+                            <!--                            <p align="right">-->
+                            <!--                                <span>Total Deduction :</span>-->
+                            <!--                                <span t-field="o.currency_id.symbol"/>-->
+                            <!--                                <span align="right" t-field="o.total_deduction"/>-->
+                            <!--                            </p>-->
+                            <!--                            <p align="right">-->
+                            <!--                                <span>Net Pay :</span>-->
+                            <!--                                <span t-field="o.currency_id.symbol"/>-->
+                            <!--                                <span align="right" t-field="o.net_pay"/>-->
+                            <!--                            </p>-->
 
                         </div>
                         <br/>

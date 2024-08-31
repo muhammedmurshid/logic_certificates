@@ -44,13 +44,13 @@ class LogicSalarySlip(models.Model):
     @api.model
     def default_get(self, fields_list):
         res = super(LogicSalarySlip, self).default_get(fields_list)
-        vals = [(0, 0, {'earnings': 'Basic', 'earned_amount': 0, 'deduction': 'PF Employer Contribution',
+        vals = [(0, 0, {'earnings': 'Basic Pay', 'earned_amount': 0, 'deduction': 'PF Employer Contribution',
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'HRA', 'earned_amount': 0, 'deduction': 'PF Employee Contribution',
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'Statutory Bonus', 'earned_amount': 0, 'deduction': 'ESI Employer Contribution',
                         'deducted_amount': 0}),
-                (0, 0, {'earnings': 'Special Allowance', 'earned_amount': 0, 'deduction': 'Professional Tax',
+                (0, 0, {'earnings': 'Special Allowance', 'earned_amount': 0, 'deduction': 'ESI Employee Contribution',
                         'deducted_amount': 0}),
 
                 (0, 0, {'earnings': 'Incentive', 'earned_amount': 0, 'deduction': 'Work from home deductions',
@@ -60,13 +60,16 @@ class LogicSalarySlip(models.Model):
                         'deducted_amount': 0}),
                 (0, 0, {'earnings': 'PF Employer Contribution', 'earned_amount': 0, 'deduction': 'Income Tax',
                         'deducted_amount': 0}),
-                (0, 0, {'earnings': 'ESI Employer Contribution', 'earned_amount': 0, 'deduction': 'ESI Employee Contribution',
+                (0, 0, {'earnings': 'ESI Employer Contribution', 'earned_amount': 0, 'deduction': 'Professional Tax',
                         'deducted_amount': 0}),
 
-                (0, 0, {'deduction': 'Leave Salary deduction',
+                (0, 0, {'earnings': '', 'earned_amount': None, 'deduction': 'Leave Salary deduction',
                         'deducted_amount': 0}),
-                (0, 0, {'deduction': 'Salary Advance',
+                (0, 0, {'earnings': '', 'earned_amount': None, 'deduction': 'Salary Advance',
                         'deducted_amount': 0}),
+                (0, 0, {'earnings': 'CTC Pay', 'earned_amount': 0, 'deduction': 'Total Deduction',
+                        'deducted_amount': 0}),
+                (0, 0, {'deduction': 'Net Pay', 'deducted_amount': 0,}),
                 ]
         res.update({'salary_ids': vals})
         return res
@@ -83,7 +86,8 @@ class LogicSalarySlip(models.Model):
         """
         total = 0
         for order in self.salary_ids:
-            total += order.earned_amount
+            if order.earnings != 'CTC Pay' and order.earnings != 'Net Pay':
+                total += order.earned_amount
         self.update({
             'gross_pay': total,
         })
@@ -108,6 +112,17 @@ class LogicSalarySlip(models.Model):
             'sample_gross_pay': total,
         })
 
+    @api.onchange('gross_pay','net_pay','total_deduction')
+    def _onchange_gross_pay_and_total_deduction(self):
+        print('eeeeee')
+        for i in self.salary_ids:
+            if i.earnings == 'CTC Pay':
+                i.earned_amount = self.gross_pay
+            if i.deduction == 'Net Pay':
+                i.deducted_amount = self.net_pay
+            if i.deduction == 'Total Deduction':
+                i.deducted_amount = self.total_deduction
+
     @api.depends('salary_ids.deducted_amount')
     def _amount_all_deduction(self):
         """
@@ -115,7 +130,8 @@ class LogicSalarySlip(models.Model):
         """
         total = 0
         for order in self.salary_ids:
-            total += order.deducted_amount
+            if order.deduction != 'Total Deduction' and order.deduction != 'Net Pay':
+                total += order.deducted_amount
         self.update({
             'total_deduction': total,
         })
@@ -133,7 +149,7 @@ class LogicSalaryCalculation(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     earnings = fields.Char(string="Earnings")
-    earned_amount = fields.Float(string="Earned Amount")
+    earned_amount = fields.Float(string="Earned Amount", default=None)
     deduction = fields.Char(string="Deductions")
     deducted_amount = fields.Float(string="Deducted Amount")
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
