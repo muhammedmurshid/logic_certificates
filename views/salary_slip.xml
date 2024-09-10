@@ -26,8 +26,9 @@
                     </group>
                      <notebook>
                         <page string="Salary">
-                            <field name="salary_ids">
+                            <field name="salary_ids" widget="section_and_note_one2many">
                                 <tree editable="bottom">
+                                    <field name="sequence" widget="handle" />
                                     <field name="earnings"/>
                                     <field name="earned_amount" />
                                     <field name="deduction"/>

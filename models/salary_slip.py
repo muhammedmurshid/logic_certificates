@@ -18,7 +18,7 @@ class LogicSalarySlip(models.Model):
     esi_number = fields.Char(string="ESI Number")
     pf_number = fields.Char(string="PF Number")
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.user.company_id)
-    salary_ids = fields.One2many('logic.salary.calculation', 'salary_id', string="Salary Details")
+    salary_ids = fields.One2many('logic.salary.calculation', 'salary_id', string="Salary Details", order="sequence")
 
     def _compute_display_name(self):
         for i in self:
@@ -151,6 +151,8 @@ class LogicSalaryCalculation(models.Model):
     earnings = fields.Char(string="Earnings")
     earned_amount = fields.Float(string="Earned Amount", default=None)
     deduction = fields.Char(string="Deductions")
+    sequence = fields.Integer(string="Sequence")
+
     deducted_amount = fields.Float(string="Deducted Amount")
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
 
