@@ -60,8 +60,19 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="model_logic_salary_slip_common_action" model="ir.actions.server">
+        <field name="name">Common Redirect</field>
+        <field name="model_id" ref="logic_certificates.model_logic_experience_certificates"/>
+        <field name="binding_model_id" ref="logic_certificates.model_logic_experience_certificates"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model._redirect_based_on_user_group()
+        </field>
+    </record>
+
     <menuitem name="Certificates"
               id="model_logic_experience_main_menu"
+              action="model_logic_salary_slip_common_action"
               web_icon="logic_certificates/static/description/icon.png"
               sequence="1"/>
 

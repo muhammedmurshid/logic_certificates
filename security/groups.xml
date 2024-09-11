@@ -14,5 +14,9 @@
             <field name="name">Academics</field>
             <field name="category_id" ref="module_logic_exp_certificates"/>
         </record>
+        <record id="employees_for_certificates" model="res.groups">
+            <field name="name">Employees</field>
+            <field name="category_id" ref="module_logic_exp_certificates"/>
+        </record>
     </data>
 </odoo>

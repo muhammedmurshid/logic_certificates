@@ -63,3 +63,41 @@ class LogicExperienceCertificates(models.Model):
             else:
                 self.state = False
                 self.country = False
+
+    @api.model
+    def _redirect_based_on_user_group(self):
+        # Get the current user
+        user = self.env.user
+        print(user.groups_id,'user')
+
+        # Check if the user belongs to a specific group
+        hr_manager_group = self.env.ref('logic_certificates.hr_manager_certificates')
+        employees = self.env.ref('logic_certificates.employees_for_certificates')
+        print(hr_manager_group, 'hr')
+        print(employees, 'emplo')
+        if employees in user.groups_id:
+            print('yes')
+            # Redirect to Experience Certificates if the user is an HR manager
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Salary Slips',
+                'res_model': 'logic.salary.slip',
+                'view_mode': 'tree,form',
+                'target': 'current',
+                'views': [(self.env.ref('logic_certificates.model_logic_salary_slip_list').id, 'tree'),
+                          (self.env.ref('logic_certificates.model_logic_salary_slip_form_view').id, 'form')],
+            }
+
+        else:
+            print('no')
+            # Redirect to Salary Slips for other users
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Experience Certificates',
+                'res_model': 'logic.experience.certificates',
+                'view_mode': 'tree,form',
+                'target': 'current',
+                'views': [(self.env.ref('logic_certificates.model_logic_experience_list').id, 'tree'),
+                          (self.env.ref('logic_certificates.model_logic_experience_form').id, 'form')],
+            }
+

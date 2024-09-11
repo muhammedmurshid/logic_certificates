@@ -6,12 +6,14 @@
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
+        'security/rules.xml',
         'views/experience.xml',
         'views/experience_template.xml',
         'views/salary_slip.xml',
         'views/salary_template.xml',
         'views/bonafide_certificates.xml',
         'views/bonafide_template.xml',
+
     ],
 
     'demo': [],
