@@ -5,4 +5,3 @@ salary_slip,salary_slip,model_logic_salary_slip,hr_manager_certificates,1,1,1,1
 salary_slip_calculation,salary_slip_calculation,model_logic_salary_calculation,,1,1,1,1
 bonafide_certificates,bonafide_certificates,model_logic_bonafide_certificates,academics_certificates_group,1,1,1,1
 salary_slip_employees,salary_slip_employees,model_logic_salary_slip,employees_for_certificates,1,0,0,0
-

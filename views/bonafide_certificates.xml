@@ -10,7 +10,7 @@
                     <group>
                         <group>
                             <field name="title"/>
-                            <field name="student_id"/>
+                            <field name="student_id" options="{'no_create':True}"/>
                             <field name="address"/>
                             <field name="place"/>
                             <field name="course_id"/>

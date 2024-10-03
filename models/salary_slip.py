@@ -152,9 +152,6 @@ class LogicSalaryCalculation(models.Model):
     earned_amount = fields.Float(string="Earned Amount", default=None)
     deduction = fields.Char(string="Deductions")
     sequence = fields.Integer(string="Sequence")
-
     deducted_amount = fields.Float(string="Deducted Amount")
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
-
     salary_id = fields.Many2one('logic.salary.slip', string="Salary Slip Id", ondelete="cascade")
-
