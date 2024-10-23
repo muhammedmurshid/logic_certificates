@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <template id="assets_backend_location" name="im assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/logic_certificates/static/src/js/location.js"></script>
+        </xpath>
+    </template>
     <record id="model_bonafide_certificates_form" model="ir.ui.view">
         <field name="name">Bonafide Certificates</field>
         <field name="model">logic.bonafide.certificates</field>
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Types">
+                <headers>
+<!--                    <button type="button" class="btn btn-primary"-->
+<!--                            string="Get Current Location" name="get_location_action"-->
+<!--                            data-action="getCurrentLocation"/>-->
+                </headers>
                 <sheet>
                     <group>
                         <group>
+
                             <field name="title"/>
                             <field name="student_id" options="{'no_create':True}"/>
                             <field name="address"/>

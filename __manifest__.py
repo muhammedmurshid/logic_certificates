@@ -15,7 +15,11 @@
         'views/bonafide_template.xml',
 
     ],
-
+    'assets': {
+        'web.assets_backend': [
+            'logic_certificates/static/src/js/location.js',
+        ],
+    },
     'demo': [],
     'summary': "cip/excel_module",
     'description': "this_is_my_app",
