@@ -33,7 +33,6 @@
                                     <field name="earned_amount" />
                                     <field name="deduction"/>
                                     <field name="deducted_amount"/>
-
                                 </tree>
                             </field>
                         </page>
