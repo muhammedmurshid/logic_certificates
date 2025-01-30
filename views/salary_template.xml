@@ -255,21 +255,21 @@
                                 </tbody>
 
                             </table>
-                            <p>
-                                <span>CTC Pay :</span>
-                                <span t-field="o.currency_id.symbol"/>
-                                <span align="right" t-field="o.gross_pay"/>
-                            </p>
-                            <p align="right">
-                                <span>Total Deduction :</span>
-                                <span t-field="o.currency_id.symbol"/>
-                                <span align="right" t-field="o.total_deduction"/>
-                            </p>
-                            <p align="right">
-                                <span>Net Pay :</span>
-                                <span t-field="o.currency_id.symbol"/>
-                                <span align="right" t-field="o.net_pay"/>
-                            </p>
+<!--                            <p align="right">-->
+<!--                                <span>CTC Pay :</span>-->
+<!--                                <span t-field="o.currency_id.symbol"/>-->
+<!--                                <span align="right" t-field="o.gross_pay"/>-->
+<!--                            </p>-->
+<!--                            <p align="right">-->
+<!--                                <span>Total Deduction :</span>-->
+<!--                                <span t-field="o.currency_id.symbol"/>-->
+<!--                                <span align="right" t-field="o.total_deduction"/>-->
+<!--                            </p>-->
+<!--                            <p align="right">-->
+<!--                                <span>Net Pay :</span>-->
+<!--                                <span t-field="o.currency_id.symbol"/>-->
+<!--                                <span align="right" t-field="o.net_pay"/>-->
+<!--                            </p>-->
 
                         </div>
                         <br/>
